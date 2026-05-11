@@ -19,7 +19,7 @@ import java.util.Collections;
 public class SecurityConfig {
 
     @Bean
-    private SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception {
         return http
                 .sessionManagement(management ->
                         management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .build();
     }
 
-    private CorsConfigurationSource corsConfigurationSource() {
+    public CorsConfigurationSource corsConfigurationSource() {
         return new CorsConfigurationSource() {
             @Override
             public @Nullable CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
