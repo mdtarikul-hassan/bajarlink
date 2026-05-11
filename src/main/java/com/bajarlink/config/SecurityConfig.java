@@ -33,6 +33,25 @@ public class SecurityConfig {
                 .build();
     }
 
-    
+    private CorsConfigurationSource corsConfigurationSource() {
+        return new CorsConfigurationSource() {
+            @Override
+            public @Nullable CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+                CorsConfiguration cfg = new CorsConfiguration();
+                cfg.setAllowedOrigins(
+                        Arrays.asList(
+                                "http://localhost:5173"
+                        )
+                );
+                cfg.setAllowedMethods(Collections.singletonList("*"));
+                cfg.setAllowCredentials(true);
+                cfg.setAllowedHeaders(Collections.singletonList("*"));
+                cfg.setExposedHeaders(Arrays.asList("Authorization"));
+                cfg.setMaxAge(3600L);
+
+                return cfg;
+            }
+        };
+    }
 }
 
