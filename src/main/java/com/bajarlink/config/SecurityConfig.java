@@ -29,7 +29,7 @@ public class SecurityConfig {
                         request.requestMatchers("/api/**").authenticated()
                                 .requestMatchers("/api/super-admin/**").hasRole("ADMIN")
                                 .anyRequest().permitAll())
-                .addFilterBefore(new jwtValidator(), BasicAuthenticationFilter.class)
+                .addFilterBefore(new JwtValidator(), BasicAuthenticationFilter.class)
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .build();

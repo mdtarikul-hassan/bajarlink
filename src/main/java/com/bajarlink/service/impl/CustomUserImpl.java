@@ -2,7 +2,6 @@ package com.bajarlink.service.impl;
 
 import com.bajarlink.model.User;
 import com.bajarlink.repo.UserRepo;
-import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

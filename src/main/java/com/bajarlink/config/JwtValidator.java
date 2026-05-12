@@ -19,15 +19,15 @@ import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.util.List;
 
-public class jwtValidator extends OncePerRequestFilter {
+public class JwtValidator extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String jwt = request.getHeader(jwtConstant.JWT_HEADER);
+        String jwt = request.getHeader(JwtConstant.JWT_HEADER);
 
         if(jwt != null){
             try{
-                SecretKey key = Keys.hmacShaKeyFor(jwtConstant.JWT_SECRET.getBytes());
+                SecretKey key = Keys.hmacShaKeyFor(JwtConstant.JWT_SECRET.getBytes());
                 Claims claims = Jwts.parser()
                         .verifyWith(key)
                         .build()
