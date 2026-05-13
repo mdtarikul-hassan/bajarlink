@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService {
         if (user != null) {
             throw new UserException("User already exists");
         }
-        if(user.getRole().equals(UserRole.ROLE_ADMIN)){
+        if(userDto.getRole().equals(UserRole.ROLE_ADMIN)){
             throw new UserException("You are not allowed to use this service");
         }
 
