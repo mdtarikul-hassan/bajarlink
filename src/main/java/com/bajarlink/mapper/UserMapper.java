@@ -5,6 +5,9 @@ import com.bajarlink.payload.dto.UserDto;
 
 public class UserMapper {
     public static UserDto toDTO(User savedUser) {
+        if(savedUser == null){
+            return null;
+        }
         UserDto userDto = new UserDto();
         userDto.setId(savedUser.getId());
         userDto.setFullName(savedUser.getFullName());
