@@ -1,0 +1,9 @@
+package com.bajarlink.repo;
+
+import com.bajarlink.model.Store;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface StoreRepo extends JpaRepository<Store,Long> {
+
+    Store findByStoreAdminId(Long adminId);
+}

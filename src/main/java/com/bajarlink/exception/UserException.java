@@ -1,6 +1,6 @@
 package com.bajarlink.exception;
 
-public class UserException extends Throwable {
+public class UserException extends Exception {
     public UserException(String messege) {
         super(messege);
     }
