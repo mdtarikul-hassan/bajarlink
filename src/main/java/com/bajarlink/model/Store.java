@@ -40,9 +40,9 @@ public class Store {
         status = StoreStatus.PENDING;
     }
 
-//    @PrePersist
-//    protected void onupdate() {
-//        updatedAt = LocalDateTime.now();
-//    }
+    @PreUpdate
+    protected void onupdate() {
+        updatedAt = LocalDateTime.now();
+    }
 
 }
