@@ -1,0 +1,23 @@
+package com.bajarlink.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+//@EqualsAndHashCode
+@Builder
+public class Categories {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String name;
+
+    @ManyToOne
+    private Store store;
+}

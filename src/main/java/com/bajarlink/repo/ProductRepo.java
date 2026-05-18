@@ -11,7 +11,7 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
 
     List<Product> findByStoreId(Long storeId);
 
-    @Query("SELECT p FROM Product p WHERE p.storeId = :storeId AND (" +
+    @Query("SELECT p FROM Product p WHERE p.store.id = :storeId AND (" +
             "LOWER(p.name) LIKE LOWER(CONCAT('%', :q, '%')) " +
             "OR LOWER(p.name) LIKE LOWER(CONCAT('%', :q, '%'))" +
             "OR LOWER(p.sku) LIKE LOWER(CONCAT('%', :q, '%'))" +

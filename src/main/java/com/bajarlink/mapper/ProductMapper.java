@@ -1,7 +1,9 @@
 package com.bajarlink.mapper;
 
+import com.bajarlink.model.Categories;
 import com.bajarlink.model.Product;
 import com.bajarlink.model.Store;
+import com.bajarlink.payload.dto.CategoriesDto;
 import com.bajarlink.payload.dto.ProductDto;
 
 public class ProductMapper {
@@ -19,10 +21,11 @@ public class ProductMapper {
         dto.setStoreId(product.getStore() != null ? product.getStore().getId() : null);
         dto.setCreatedAt(product.getCreatedAt());
         dto.setUpdatedAt(product.getUpdatedAt());
+        dto.setCategoriesDto(CategoriesMapper.toDto(product.getCategory()));
         return dto;
 
     }
-    public static Product toEntity(ProductDto dto, Store store) {
+    public static Product toEntity(ProductDto dto, Store store, Categories categories) {
         Product product = new Product();
         product.setName(dto.getName());
         product.setDescription(dto.getDescription());
@@ -30,6 +33,9 @@ public class ProductMapper {
         product.setMrp(dto.getMrp());
         product.setSellingPrice(dto.getSellingPrice());
         product.setBrand(dto.getBrand());
+        product.setImage(dto.getImage());
+        product.setStore(store);
+        product.setCategory(categories);
 
         return  product;
     }

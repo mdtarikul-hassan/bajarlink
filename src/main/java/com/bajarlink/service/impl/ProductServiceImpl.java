@@ -1,10 +1,12 @@
 package com.bajarlink.service.impl;
 
 import com.bajarlink.mapper.ProductMapper;
+import com.bajarlink.model.Categories;
 import com.bajarlink.model.Product;
 import com.bajarlink.model.Store;
 import com.bajarlink.model.User;
 import com.bajarlink.payload.dto.ProductDto;
+import com.bajarlink.repo.CategoriesRepo;
 import com.bajarlink.repo.ProductRepo;
 import com.bajarlink.repo.StoreRepo;
 import com.bajarlink.service.ProductService;
@@ -20,14 +22,21 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepo productRepo;
     private final StoreRepo storeRepo;
+    private final CategoriesRepo categoriesRepo;
 
     @Override
     public ProductDto createProduct(ProductDto productDto, User user) throws Exception {
         Store store = storeRepo.findById(productDto.getStoreId()).orElseThrow(
                 () -> new Exception("Store not found")
         );
+        if(productDto.getCategoryId() == null){
+            throw new Exception("Category Id is required");
+        }
+        Categories categories = categoriesRepo.findById(productDto.getCategoryId()).orElseThrow(
+                () -> new Exception("Category not found")
+        );
 
-        Product product = ProductMapper.toEntity(productDto, store);
+        Product product = ProductMapper.toEntity(productDto, store, categories);
         Product updatedProduct = productRepo.save(product);
         return ProductMapper.toDto(updatedProduct);
     }
@@ -37,6 +46,12 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepo.findById(id).orElseThrow(
                 () -> new Exception("product not found")
         );
+        if(productDto.getCategoriesDto() != null) {
+            Categories categories = categoriesRepo.findById(productDto.getCategoryId()).orElseThrow(
+                    () -> new Exception("Category not found")
+            );
+            product.setCategory(categories);
+        }
 
         product.setName(productDto.getName());
         product.setDescription(productDto.getDescription());
