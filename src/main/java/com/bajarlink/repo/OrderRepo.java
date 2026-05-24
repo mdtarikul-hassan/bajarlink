@@ -10,7 +10,8 @@ import java.util.List;
 public interface OrderRepo extends JpaRepository<Order, Long> {
 
     List<Order> findByCustomerId(Long customerId);
-    List<Order> findByBrandId(Long brandId);
+//    List<Order> findByBrandId(Long brandId);
+    List<Order> findByBranchId(Long branchId);
     List<Order> findByCashierId(Long cashierId);
     List<Order> findByBranchIdAndCreatedAtBetween(Long branchId, LocalDateTime from, LocalDateTime to);
     List<Order> findByCashierAndCreatedAtBetween(User cashier, LocalDateTime from, LocalDateTime to);
