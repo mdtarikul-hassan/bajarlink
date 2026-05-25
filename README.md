@@ -573,4 +573,9 @@ You can test all APIs using:
 
 # 👨‍💻 Developer
 
-Built with [Md Tarikul Hassan](https;//github.com/mdtarikul-hassan) using **Java + Spring Boot** for scalable POS & inventory management solutions.
+
+Built with ❤️ by [Md Tarikul Hassan](https://github.com/mdtarikul-hassan)
+
+🔗 GitHub Repository: https://github.com/mdtarikul-hassan/bajarlink
+
+using **Java + Spring Boot** for scalable POS & inventory management solutions.
